@@ -1,0 +1,93 @@
+﻿
+<Window x:Class="LotoDisplay.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LotoDisplay"
+        mc:Ignorable="d"
+        Title="Loto" Height="Auto" Width="800">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Name="num_grid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Name="ref_column" Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+
+            </Grid>
+            <Grid Grid.Row="1" Margin="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="Reset" Width="50" Height="30" Click="Reset_Click"/>
+                <Button Grid.Column="1" Content="Next" Width="50" Height="30" Click="Next_Click"/>
+                <Button Grid.Column="2" Content="1 Ligne" Width="50" Height="30" Click="UneLigne_Click"/>
+                <Button Grid.Column="3" Content="2 Lignes" Width="50" Height="30" Click="DeuxLignes_Click"/>
+                <Button Grid.Column="4" Content="Carton" Width="50" Height="30" Click="Carton_Click"/>
+                <Button Grid.Column="5" Content="Perdant" Width="50" Height="30" Click="Perdant_Click"/>
+            </Grid>
+        </Grid>
+        
+        <Grid Grid.Column="1" Name="display">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="2*"  />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" HorizontalAlignment="Center" Margin="0 50 20 0">
+                <Viewbox >
+                    <TextBlock Name="Game_Display" HorizontalAlignment="Center" Height="20"></TextBlock>
+                </Viewbox>
+            </Label>
+            <Label Grid.Row="1" HorizontalAlignment="Center" Margin="0 0 0 50">
+                <Viewbox  >
+                    <TextBlock Name="Num_Display" ></TextBlock>
+                </Viewbox>
+            </Label>
+        </Grid>
+    </Grid>
+</Window>
