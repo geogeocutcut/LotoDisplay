@@ -93,7 +93,7 @@ namespace LotoDisplay
         private void Carton_Click(object sender, RoutedEventArgs e)
         {
             Game_Display.Text = "Carton Complet";
-            Init();
+            //Init();
         }
         private void Perdant_Click(object sender, RoutedEventArgs e)
         {
