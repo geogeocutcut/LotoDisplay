@@ -26,7 +26,7 @@ namespace LotoDisplay
         {
             AlReady_Click.Clear();
             Num_Display.Text = "--"; num_grid.Children.Clear();
-             var pad = new Thickness { Bottom = 5, Top = 5, Left = 5, Right = 5 };
+            var pad = new Thickness { Bottom = 5, Top = 5, Left = 5, Right = 5 };
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 9; j++)
