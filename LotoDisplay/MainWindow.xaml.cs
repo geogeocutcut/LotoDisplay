@@ -26,7 +26,7 @@ namespace LotoDisplay
         {
             AlReady_Click.Clear();
             Num_Display.Text = "--"; num_grid.Children.Clear();
-            var pad = new Thickness { Bottom = 5, Top = 5, Left = 5, Right = 5 };
+             var pad = new Thickness { Bottom = 2, Top = 2, Left = 2, Right = 2 };
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 9; j++)
@@ -34,8 +34,10 @@ namespace LotoDisplay
                     var factory = new FrameworkElementFactory(typeof(Viewbox));
                     Button btn = new Button
                     {
+                        Padding=pad,
+                        HorizontalContentAlignment=HorizontalAlignment.Stretch,
                         Name = "numb_" + int.Parse(j + "" + i) + 1,
-                        Content = new Viewbox { Child = new TextBlock { Padding = pad, Text = "" + (int.Parse(j + "" + i) + 1) } },
+                        Content = new Border { HorizontalAlignment=HorizontalAlignment.Stretch, Child = new Viewbox { Stretch = Stretch.Uniform, HorizontalAlignment = HorizontalAlignment.Stretch, Child = new TextBlock { HorizontalAlignment = HorizontalAlignment.Stretch,Padding=pad,  Text = "" + (int.Parse(j + "" + i) + 1) } } },
                     };
                     btn.Click += NumClick_Event;
                     Grid.SetRow(btn, i + 1);
@@ -51,17 +53,17 @@ namespace LotoDisplay
             {
                 AlReady_Click.Remove((Button)sender);
                 var but = (Button)sender;
-                ((TextBlock)((Viewbox)but.Content).Child).ClearValue(TextBlock.BackgroundProperty);
-                ((TextBlock)((Viewbox)but.Content).Child).ClearValue(TextBlock.ForegroundProperty);
-                Num_Display.Text = AlReady_Click.LastOrDefault()!=null?((TextBlock)((Viewbox)AlReady_Click.LastOrDefault().Content).Child).Text:"--";
+                ((Border)but.Content).ClearValue(Border.BackgroundProperty);
+                ((TextBlock)((Viewbox)((Border)but.Content).Child).Child).ClearValue(TextBlock.ForegroundProperty);
+                Num_Display.Text = AlReady_Click.LastOrDefault()!=null? ((TextBlock)((Viewbox)((Border)AlReady_Click.LastOrDefault().Content).Child).Child).Text:"--";
             }
             else
             {
                 AlReady_Click.Add((Button)sender);
                 var but = (Button)sender;
-                ((TextBlock)((Viewbox)but.Content).Child).Background = Brushes.Black;
-                ((TextBlock)((Viewbox)but.Content).Child).Foreground = Brushes.White;
-                Num_Display.Text = ((TextBlock)((Viewbox)but.Content).Child).Text;
+                ((Border)but.Content).Background = Brushes.DarkGreen;
+                ((TextBlock)((Viewbox)((Border)but.Content).Child).Child).Foreground = Brushes.White;
+                Num_Display.Text = ((TextBlock)((Viewbox)((Border)but.Content).Child).Child).Text;
             }
         }
 
